@@ -1,13 +1,11 @@
 package com.codefoe.repository;
 
-import com.codefoe.exception.BadRequestException;
 import com.codefoe.exception.RecordNotFoundException;
 import com.codefoe.model.Account;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Component

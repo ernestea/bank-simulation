@@ -2,10 +2,12 @@ package com.codefoe.service.impl;
 
 import com.codefoe.enums.AccountType;
 import com.codefoe.model.Account;
+import com.codefoe.model.AccountStatus;
 import com.codefoe.repository.AccountRepository;
 import com.codefoe.service.AccountService;
 import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -31,6 +33,7 @@ public class AccountServiceImpl implements AccountService {
                 .creationDate(creationDate)
                 .accountType(accountType)
                 .balance(balance)
+                .accountStatus(AccountStatus.ACTIVE)
                 .build();
         return accountRepository.save(account);
 
@@ -39,5 +42,9 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<Account> listAllAccounts() {
         return accountRepository.findAll();
+    }
+
+    public Account createNewAccount(Account account) {
+        return accountRepository.save(account);
     }
 }

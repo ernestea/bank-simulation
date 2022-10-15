@@ -18,21 +18,37 @@ public class BankSimulationApplication {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(BankSimulationApplication.class, args);
-        AccountService accountService = context.getBean(AccountService.class);
+//        AccountService accountService = context.getBean(AccountService.class);
 
-        Account sender = accountService.createNewAccount(new BigDecimal("100"),Date.from(Instant.now()), AccountType.CHECKING, 10090L);
-        Account receiver = accountService.createNewAccount(new BigDecimal("1"),Date.from(Instant.now()), AccountType.CHECKING, 10091L);
+//        Account sender = accountService.createNewAccount(new BigDecimal("100"),new Date(), AccountType.CHECKING, 10090L);
+//        Account receiver = accountService.createNewAccount(new BigDecimal("1"),Date.from(Instant.now()), AccountType.CHECKING, 10091L);
+//        Account receiver1 = accountService.createNewAccount(new BigDecimal("1"),Date.from(Instant.now()), AccountType.CHECKING, 10091L);
+//        Account receiver2 = accountService.createNewAccount(new BigDecimal("1"),Date.from(Instant.now()), AccountType.SAVING, 10091L);
+//        Account receiver3 = accountService.createNewAccount(new BigDecimal("1"),Date.from(Instant.now()), AccountType.CHECKING, 10091L);
+//        Account receiver4 = accountService.createNewAccount(new BigDecimal("1"),Date.from(Instant.now()), AccountType.SAVING, 10091L);
+//        Account receiver5 = accountService.createNewAccount(new BigDecimal("1"),Date.from(Instant.now()), AccountType.CHECKING, 10091L);
+//        Account receiver6 = accountService.createNewAccount(new BigDecimal("1"),Date.from(Instant.now()), AccountType.CHECKING, 10091L);
+//
+//        System.out.println("Sender's balance before transaction " + sender.getBalance());
+//        System.out.println("Receiver's balance before transaction " + receiver.getBalance());
+//
+//
+//        TransactionService transactionService = context.getBean(TransactionService.class);
+//        Transaction transaction = transactionService.makeTransfer(sender,receiver,new BigDecimal("1"),Date.from(Instant.now()),"Checking to checking");
+//        System.out.println("Amount that was transferred " + transaction.getAmount());
+//        System.out.println("Sender's balance after transaction " + sender.getBalance());
+//        System.out.println("Receiver's balance after transaction " + receiver.getBalance());
+//        transactionService.findAllTransaction().forEach(System.out::println);
+//
+//        sender = accountService.createNewAccount(new BigDecimal("100"),new Date(), AccountType.SAVING, 10090L);
+//        receiver = accountService.createNewAccount(new BigDecimal("1"),Date.from(Instant.now()), AccountType.CHECKING, 10091L);
+//        transaction = transactionService.makeTransfer(sender,receiver,new BigDecimal("1"),Date.from(Instant.now()),"savings to checking");
+//
+//        System.out.println("Amount that was transferred " + transaction.getAmount());
+//        System.out.println("Sender's balance after transaction " + sender.getBalance());
+//        System.out.println("Receiver's balance after transaction " + receiver.getBalance());
+//        transactionService.findAllTransaction().forEach(System.out::println);
 
-        System.out.println("Sender's balance before transaction " + sender.getBalance());
-        System.out.println("Receiver's balance before transaction " + receiver.getBalance());
-
-
-        TransactionService transactionService = context.getBean(TransactionService.class);
-        Transaction transaction = transactionService.makeTransfer(sender,receiver,new BigDecimal("1"),Date.from(Instant.now()),"Checking to checking");
-        System.out.println("Amount that was transferred " + transaction.getAmount());
-        System.out.println("Sender's balance after transaction " + sender.getBalance());
-        System.out.println("Receiver's balance after transaction " + receiver.getBalance());
-        transactionService.findAllTransaction().forEach(System.out::println);
     }
 
 }
