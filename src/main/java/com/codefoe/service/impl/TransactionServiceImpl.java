@@ -24,15 +24,14 @@ import java.util.UUID;
 public class TransactionServiceImpl implements TransactionService {
     AccountRepository accountRepository;
     TransactionRepository transactionRepository;
+    @Value("${under_construction}")
+    private boolean under_construction;
 
-    @Autowired
+
     public TransactionServiceImpl(AccountRepository accountRepository,TransactionRepository transactionRepository) {
         this.accountRepository = accountRepository;
         this.transactionRepository = transactionRepository;
     }
-
-    @Value("${under_construction}")
-    private boolean under_construction;
 
     @Override
     public Transaction makeTransfer(Account sender, Account receiver, BigDecimal amount, Date creationDate, String message) {
@@ -69,10 +68,6 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     private void checkAccountOwnership(Account sender, Account receiver) {
-        /*
-        write an if statement that checks if one of the account is saving,
-        and if user of sender or receiver is not the same, throw AccountOwnershipException
-         */
         if(sender.getAccountType().equals(AccountType.SAVING) || receiver.getAccountType().equals(AccountType.SAVING)){
             if( ! sender.getUserId().equals(receiver.getUserId())){
                 throw new AccountOwnershipException("Transactions that involve account type savings can occur only for same user");
@@ -81,11 +76,6 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     private void validateAccount(Account sender, Account receiver) {
-        /*
-        -- If any of the accounts is null
-        -- If account ids arethe same (same account)
-        -- If the account exist in the database(repository)
-         */
         if (sender == null || receiver == null) {
             throw new BadRequestException("Sender or Receiver cannot be null");
         }
